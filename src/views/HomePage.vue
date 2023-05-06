@@ -1,56 +1,45 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+      <ion-list>
+        <ion-item-sliding ref="ionItemSlidingRef">
+          <ion-item-options side="start">
+            <ion-item-option color="success">Archive</ion-item-option>
+          </ion-item-options>
+          <ion-item>
+            <ion-label>Sliding Item with Start Options</ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+      <ion-button @click="openSlidingItem">Open Sliding Item</ion-button>
+      <ion-button @click="closeSlidingItem">Close Sliding Item</ion-button>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { ref } from "vue";
+import {
+  IonContent,
+  IonPage,
+  IonList,
+  IonItemSliding,
+  IonItemOptions,
+  IonItemOption,
+  IonItem,
+  IonLabel,
+  IonButton
+} from '@ionic/vue';
+
+const ionItemSlidingRef = ref<any>(null)
+
+function openSlidingItem() {
+    ionItemSlidingRef.value.open("start")
+}
+function closeSlidingItem() {
+    ionItemSlidingRef.value.close()
+}
 </script>
 
 <style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
 </style>

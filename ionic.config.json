@@ -1,0 +1,7 @@
+{
+  "name": "IonItemSliding open repro",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}

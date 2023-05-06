@@ -1,20 +1,21 @@
 # ion-item-sliding-open-repro
 Reproduction for issue with IonItemSliding in ionicframework (vue)
 
+## Current Behavior
+The methods (including `open` and `close`) are not available on the template ref of the `ion-item-sliding` component.
+Calling either of these methods (eg. from button handlers) logs an error to the browser's js console rather than having the intended effect (e.g. opening or closing the sliding item).
+
+Furthermore, it appears that the only keys available on the template ref are `disabled`, `ionDrag`, and `routerLink`.
+
 ## Expected Behavior
 The [ionic documentation for ion-item-sliding](https://ionicframework.com/docs/api/item-sliding#methods)
 lists `open` and `close` among the available methods. After binding a template ref to an IonItemSliding component,
 calling `open` should programmatically slide the item to expose the sliding item options, and
 calling `close` should return the sliding item to the initial state, hiding the options.
 
-## Current Behavior
-The `open` and `close` methods are not available on the template ref of the IonItemSliding component.
-Calling either of these methods in button handlers logs an error to the browser's js console rather than opening or closing the sliding item.
+I would expect all methods in the documentation to be available, including `open`, `close`, `closeOpened`, `getOpenAmount`, and `getSlidingRatio`.
 
-Furthermore, it appears that the only keys available on the template ref are `disabled`, `ionDrag`, and `routerLink`.
-I would expect that all the methods in the documentation to be available, including `closeOpened`, `getOpenAmount`, and `getSlidingRatio`.
-
-## Reproduction steps
+## Steps to Reproduce
 1. `npm install`
 2. `npm run dev`
 3. Browse to the URL served by vite
